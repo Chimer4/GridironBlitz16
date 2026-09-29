@@ -12,6 +12,10 @@ jobs:
           distribution: temurin
           java-version: "17"
       - uses: android-actions/setup-android@v3
+        with:
+          # The default list includes the legacy 'tools' package, which no
+          # longer exists in the SDK repository and makes sdkmanager fail.
+          packages: platform-tools
       - name: Build APK
         run: |
           unzip -o "*.zip"
